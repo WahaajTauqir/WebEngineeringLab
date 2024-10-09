@@ -1,0 +1,13 @@
+input.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+small {
+  color: red;
+}
+
+.success {
+  color: green;
+  font-size: 1.2em;
+  margin-top: 20px;
+}

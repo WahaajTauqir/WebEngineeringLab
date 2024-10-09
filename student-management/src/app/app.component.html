@@ -1,0 +1,50 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+    <!-- Validation message for Name -->
+    <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+      <small *ngIf="registrationForm.get('name')?.errors?.['required']">Name is required.</small>
+      <small *ngIf="registrationForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="age">Age:</label>
+    <input id="age" type="number" formControlName="age">
+    <!-- Validation message for Age -->
+    <div *ngIf="registrationForm.get('age')?.invalid && registrationForm.get('age')?.touched">
+      <small *ngIf="registrationForm.get('age')?.errors?.['required']">Age is required.</small>
+      <small *ngIf="registrationForm.get('age')?.errors?.['min']">Age must be at least 18.</small>
+      <small *ngIf="registrationForm.get('age')?.errors?.['max']">Age must be less than or equal to 60.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email">
+    <!-- Validation message for Email -->
+    <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+      <small *ngIf="registrationForm.get('email')?.errors?.['required']">Email is required.</small>
+      <small *ngIf="registrationForm.get('email')?.errors?.['email']">Please enter a valid email address.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="course">Course:</label>
+    <input id="course" formControlName="course">
+    <!-- Validation message for Course -->
+    <div *ngIf="registrationForm.get('course')?.invalid && registrationForm.get('course')?.touched">
+      <small *ngIf="registrationForm.get('course')?.errors?.['required']">Course is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
+
+<!-- Success message -->
+<div *ngIf="successMessage" class="success">
+  {{ successMessage }}
+</div>
+
+<router-outlet></router-outlet>
